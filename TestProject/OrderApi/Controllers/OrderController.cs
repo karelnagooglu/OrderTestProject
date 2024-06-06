@@ -8,10 +8,10 @@ namespace OrderApi.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly ILogger<Worker> _logger;
         private readonly IOrderQueue _orderQueue;
+        private readonly ILogger<OrderController> _logger;
 
-        public OrderController(IOrderQueue orderQueue, ILogger<Worker> logger)
+        public OrderController(IOrderQueue orderQueue, ILogger<OrderController> logger)
         {
             _orderQueue = orderQueue;
             _logger = logger;
@@ -23,12 +23,13 @@ namespace OrderApi.Controllers
         {
             try
             {
+                // await Task.Run(() => Parallel.ForEach(order.OrderItems, _orderQueue.EnqueueItem));
                 order.OrderItems.ForEach(_orderQueue.EnqueueItem);
                 return Ok();
             }
             catch (Exception e)
             {
-                _logger.LogError("Error in {PostOrder} method at {time}. Msg: {msg}", nameof(PostOrder), DateTimeOffset.Now, e.Message);
+                _logger.LogError("Error in {PostOrder} method. Msg: {Msg}", nameof(PostOrder), e.Message);
                 throw;
             }
         }

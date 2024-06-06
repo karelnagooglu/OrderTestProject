@@ -23,16 +23,16 @@ namespace OrderApi.DataLayer.Implementations
             List<OrderItem> aggregatedOrders = new List<OrderItem>();
             List<OrderItem> orderItems = _orderQueue.DequeueAllItems();
 
-            IEnumerable<IGrouping<string, OrderItem>> groupedItems = orderItems.GroupBy(x => x.productId);
+            IEnumerable<IGrouping<string, OrderItem>> groupedItems = orderItems.GroupBy(x => x.ProductId);
 
             foreach (var group in groupedItems)
             {
-                var quantityTotal = group.Sum(x => x.quantity);
+                var quantityTotal = group.Sum(x => x.Quantity);
 
                 aggregatedOrders.Add(new OrderItem
                 {
-                    productId = group.Key,
-                    quantity = quantityTotal,
+                    ProductId = group.Key,
+                    Quantity = quantityTotal,
                 });
             }
 

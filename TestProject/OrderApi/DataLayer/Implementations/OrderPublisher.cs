@@ -9,7 +9,7 @@ namespace OrderApi.DataLayer.Implementations
         {
             foreach (OrderItem orderItem in summarizedOrderItems)
             {
-                Console.WriteLine($"Aggregated order: Product Id={orderItem.productId}, Quantity total={orderItem.quantity}");    
+                Console.WriteLine($"Aggregated order: Product Id={orderItem.ProductId}, Quantity total={orderItem.Quantity}");    
             }
         }
     }

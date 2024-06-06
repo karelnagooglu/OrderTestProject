@@ -1,22 +1,23 @@
-﻿using OrderApi.DataLayer.Interfaces;
+﻿using System.Collections.Concurrent;
+using OrderApi.DataLayer.Interfaces;
 using OrderApi.Models;
 
 namespace OrderApi.DataLayer.Implementations
 {
     public class MemoryOrderQueue : IOrderQueue
     {
-        private readonly Queue<OrderItem> _queue;
+        private readonly ConcurrentQueue<OrderItem> _queue;
         private int _count;
 
         public MemoryOrderQueue()
         {
-            _queue = new Queue<OrderItem>();
+            _queue = new ConcurrentQueue<OrderItem>();
         }
 
         public void EnqueueItem(OrderItem orderItem)
         {
             _queue.Enqueue(orderItem);
-            _count++;
+            Interlocked.Increment(ref _count);
         }
 
         public List<OrderItem> DequeueAllItems()
@@ -26,7 +27,7 @@ namespace OrderApi.DataLayer.Implementations
             while (_queue.TryDequeue(out OrderItem orderItem))
             {
                 res.Add(orderItem);
-                _count--;
+                Interlocked.Decrement(ref _count);
             }
 
             return res;

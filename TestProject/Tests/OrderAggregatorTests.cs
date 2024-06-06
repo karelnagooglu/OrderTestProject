@@ -35,11 +35,11 @@ namespace Tests
 
                 Assert.Equal(2, aggregatedOrders.Count);
 
-                Assert.Equal("product_1", aggregatedOrders[0].productId);
-                Assert.Equal(10, aggregatedOrders[0].quantity);
+                Assert.Equal("product_1", aggregatedOrders[0].ProductId);
+                Assert.Equal(10, aggregatedOrders[0].Quantity);
 
-                Assert.Equal("product_2", aggregatedOrders[1].productId);
-                Assert.Equal(10, aggregatedOrders[1].quantity);
+                Assert.Equal("product_2", aggregatedOrders[1].ProductId);
+                Assert.Equal(10, aggregatedOrders[1].Quantity);
             }
 
             {
@@ -59,11 +59,11 @@ namespace Tests
 
                 Assert.Equal(2, aggregatedOrders.Count);
 
-                Assert.Equal("product_1", aggregatedOrders[0].productId);
-                Assert.Equal(20, aggregatedOrders[0].quantity);
+                Assert.Equal("product_1", aggregatedOrders[0].ProductId);
+                Assert.Equal(20, aggregatedOrders[0].Quantity);
 
-                Assert.Equal("product_2", aggregatedOrders[1].productId);
-                Assert.Equal(20, aggregatedOrders[1].quantity);
+                Assert.Equal("product_2", aggregatedOrders[1].ProductId);
+                Assert.Equal(20, aggregatedOrders[1].Quantity);
             }
         }
 
@@ -123,13 +123,13 @@ namespace Tests
                 {
                     new OrderItem()
                     {
-                        productId = "product_1",
-                        quantity = 10,
+                        ProductId = "product_1",
+                        Quantity = 10,
                     },
                     new OrderItem()
                     {
-                        productId = "product_2",
-                        quantity = 10,
+                        ProductId = "product_2",
+                        Quantity = 10,
                     }
                 }
             };

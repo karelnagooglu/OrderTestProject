@@ -1,8 +1,13 @@
-﻿namespace OrderApi.Models
+﻿using System.Text.Json.Serialization;
+
+namespace OrderApi.Models
 {
-    public class OrderItem
+    public record OrderItem
     {
-        public string productId { get; set; }
-        public long quantity { get; set; }
+        [JsonPropertyName("productId")]
+        public required string ProductId { get; init; }
+
+        [JsonPropertyName("quantity")]
+        public required long Quantity { get; init; }
     }
 }
