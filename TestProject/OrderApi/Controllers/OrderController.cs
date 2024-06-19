@@ -23,7 +23,7 @@ namespace OrderApi.Controllers
         {
             try
             {
-                // await Task.Run(() => Parallel.ForEach(order.OrderItems, _orderQueue.EnqueueItem));
+                // await Task.Run(() => Parallel.ForEach(order.OrderItems, _orderQueue.EnqueueItem)); // slo by take, ale neni potreba paralelizovat tak jednoduche ukoly jako je vlozeni do dronty
                 order.OrderItems.ForEach(_orderQueue.EnqueueItem);
                 return Ok();
             }

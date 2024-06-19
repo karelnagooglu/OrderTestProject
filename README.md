@@ -1,2 +1,1 @@
-# Order
-Solutiona je trosku schovana v adresari .\Order\TestProject\OrderApi
+Solutiona je trosku schovana v adresari OrderApi
